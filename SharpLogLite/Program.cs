@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 using SharpLogLite.Model;
 using System.Threading;
 
+/*
+ * User: duketwo
+ * Date: 10.11.2016
+ * 
+ */
+
 namespace SharpLogLite
 {
     class Program

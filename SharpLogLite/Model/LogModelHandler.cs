@@ -9,6 +9,11 @@ using System.Threading.Tasks;
 using SharpLogLite.Utility;
 using System.Collections.Concurrent;
 
+/*
+ * User: duketwo - https://github.com/duketwo/
+ * Date: 10.11.2016
+ */
+
 namespace SharpLogLite.Model
 {
     class LogModelHandler : IDisposable

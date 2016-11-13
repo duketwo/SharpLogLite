@@ -11,6 +11,11 @@ using System.Threading;
 using SharpLogLite.Utility;
 using System.Collections.Generic;
 
+/*
+ * User: duketwo - https://github.com/duketwo/
+ * Date: 10.11.2016
+ */
+
 namespace SharpLogLite.Model
 {
     public class LogModel : IDisposable

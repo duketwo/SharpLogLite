@@ -4,6 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+ * User: duketwo - https://github.com/duketwo/
+ * Date: 10.11.2016
+ */
+
 namespace SharpLogLite.Model
 {
     public enum MessageType
