@@ -3,6 +3,11 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Specialized;
 
+/*
+ * User: duketwo - https://github.com/duketwo/
+ * Date: 10.11.2016
+ */
+
 namespace SharpLogLite.Utility
 {
     /// <summary>

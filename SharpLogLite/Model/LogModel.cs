@@ -22,6 +22,7 @@ namespace SharpLogLite.Model
     {
         private static ManualResetEvent ManualResetEvent = new ManualResetEvent(false);
         public ConcurrentDictionary<uint?, FixedSizedQueue<SharpLogMessage>> Queues;
+        private Socket listener;
 
         public LogModel()
         {
@@ -33,23 +34,31 @@ namespace SharpLogLite.Model
             IPEndPoint localEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 3273);
             Console.WriteLine("Local address and port : {0}", localEP.ToString());
 
-            Socket listener = new Socket(localEP.Address.AddressFamily,
+            this.listener = new Socket(localEP.Address.AddressFamily,
                 SocketType.Stream, ProtocolType.Tcp);
 
             try
             {
-                listener.Bind(localEP);
-                listener.Listen(20);
+                this.listener.Bind(localEP);
+                this.listener.Listen(20);
 
                 while (true)
                 {
-                    ManualResetEvent.Reset();
-                    Console.WriteLine("Waiting for a connection...");
-                    listener.BeginAccept(
-                        new AsyncCallback(new LogModelHandler(ManualResetEvent, this.Queues).AcceptCallback),
-                        listener);
+                    try
+                    {
+                        ManualResetEvent.Reset();
+                        Console.WriteLine("Waiting for a connection...");
+                        this.listener.BeginAccept(
+                            new AsyncCallback(new LogModelHandler(ManualResetEvent, this.Queues).AcceptCallback),
+                            this.listener);
 
-                    ManualResetEvent.WaitOne();
+                        ManualResetEvent.WaitOne();
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(String.Format("Exception: {0}", e));
+                        break;
+                    }
                 }
             }
             catch (Exception e)
@@ -60,11 +69,11 @@ namespace SharpLogLite.Model
             Console.WriteLine("Closing the listener...");
         }
 
-      
+
 
         public void Dispose()
         {
-
+            this.listener.Close();
         }
 
     }

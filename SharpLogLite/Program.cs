@@ -8,9 +8,8 @@ using SharpLogLite.Model;
 using System.Threading;
 
 /*
- * User: duketwo
+ * User: duketwo - https://github.com/duketwo/
  * Date: 10.11.2016
- * 
  */
 
 namespace SharpLogLite
